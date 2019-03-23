@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <title>Hebes</title>
+        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        
+		
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        
+        <script src="js/angJs.js"></script>
+    </head>
+    <body ng-app="myApp" ng-controller="myCtrl" ng-init="subBtn=true ; tLove = true  ">
+        
+        <div class="container-fluid">
+            <div class="row">
+                <!----------------------------------------------------------------------------------->
+				
+				<!----------------------------wish list ------------------------------------------->
+				<section class="wishList">
+					
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12"><h6>Close</h6></div>
+							
+							<h4 ng-show="tryLove()">No Item Select </h4>
+							<div ng-hide="tryLove()">
+							<div class=" col-xs-12">
+								<h4>CHAIR</h4>
+								
+								<div class="col-md-6  col-sm-12 card" ng-repeat="lov in loveList " ng-show ="lov.proToggle == 'chair'">
+									<div class="con-img ">
+										<img src="images/{{lov.proLove}}.jpg">
+									</div>
+									<div class="con-info">
+										
+										<h5>{{lov.proName}}</h5>
+										<ul class="list-unstyled list-inline ">
+											<li data-toggle="tooltip"  onclick="gets()" title="Add to cart " ng-class="getCartClass(lov.proId)" data-placement = "bottom" ng-click="addShop(lov.proId)" ><i class="fas fa-cart-plus"></i></li>
+											<li data-toggle="tooltip" onclick="sets()" title="Remove from wishlist " ng-click=" removeItem(lov.proId)" data-placement = "bottom"><i class="fas fa-thumbs-down"></i></li>
+										
+										</ul>
+										<h6>{{lov.proPrice}}</h6>
+									</div>
+									<div class="clr"></div>
+								</div>
+								
+								
+							</div>
+							
+							
+							
+							
+							<div class=" col-xs-12">
+								<h4>SOFA</h4>
+								
+								<div class="col-md-6  col-sm-12 card" ng-repeat="lov in loveList " ng-show ="lov.proToggle == 'sofa'">
+									<div class="con-img ">
+										<img src="images/{{lov.proLove}}.jpg">
+									</div>
+									<div class="con-info">
+										
+										<h5>{{lov.proName}}</h5>
+										<ul class="list-unstyled list-inline ">
+											<li data-toggle="tooltip" onclick="gets()"   ng-class="getCartClass(lov.proId)" title="Add to cart " data-placement = "bottom"  ng-click="addShop(lov.proId)" ><i class="fas fa-cart-plus"></i></li>
+											<li data-toggle="tooltip" onclick="sets()" title="Remove from wishlist " ng-click=" removeItem(lov.proId)" data-placement = "bottom"><i class="fas fa-thumbs-down"></i></li>
+											
+										</ul>
+										<h6>{{lov.proPrice}}</h6>
+									</div>
+									<div class="clr"></div>
+								</div>
+								
+								
+							</div>
+							
+							
+							
+							<div class=" col-xs-12">
+								<h4>Table</h4>
+								
+								<div class="col-md-6  col-sm-12 card" ng-repeat="lov in loveList " ng-show ="lov.proToggle == 'table'">
+									<div class="con-img ">
+										<img src="images/{{lov.proLove}}.jpg">
+									</div>
+									<div class="con-info">
+										
+										<h5>{{lov.proName}}</h5>
+									<ul class="list-unstyled list-inline ">
+											<li data-toggle="tooltip"  onclick="gets()"  ng-class="getCartClass(lov.proId)" title="Add to cart " data-placement = "bottom" ng-click="addShop(lov.proId)" ><i class="fas fa-cart-plus"></i></li>
+											<li data-toggle="tooltip" onclick="sets()" title="Remove from wishlist " ng-click=" removeItem(lov.proId)" data-placement = "bottom"><i class="fas fa-thumbs-down"></i></li>
+											
+										</ul>
+										<h6>{{lov.proPrice}}</h6>
+									</div>
+									<div class="clr"></div>
+								</div>
+								
+							</div>
+							
+							
+							
+							
+							
+							<div class="col-xs-12">
+								<h4>LAMP</h4>
+								
+								<div class="col-md-6  col-sm-12 card" ng-repeat="lov in loveList " ng-show ="lov.proToggle == 'lamp'">
+									<div class="con-img ">
+										<img src="images/{{lov.proLove}}.jpg">
+									</div>
+									<div class="con-info">
+										
+										<h5>{{lov.proName}}</h5>
+										<ul class="list-unstyled list-inline ">
+											<li data-toggle="tooltip"  onclick="gets()" ng-class="getCartClass(lov.proId)" title="Add to cart " data-placement = "bottom" ng-click="addShop(lov.proId)" ><i class="fas fa-cart-plus"></i></li>
+											<li data-toggle="tooltip" onclick="sets()" title="Remove from wishlist " ng-click=" removeItem(lov.proId)" data-placement = "bottom"><i class="fas fa-thumbs-down"></i></li>
+											
+										</ul>
+										<h6>{{lov.proPrice}}</h6>
+									</div>
+									<div class="clr"></div>
+								</div>
+							</div>
+								
+								</div>
+						</div>
+					</div>
+				</section>
+				<!------------------------------------------------------------------------------------>
+				<!-------------------------------------news letter-------------------------->
+				<section class="news  ">
+					<div class="con-news">
+						
+						<div class="con-image">
+							<div class="con-opa text-center">
+								<i class="fas fa-times close-news "></i>
+								<h6>News Letter</h6>
+							</div>
+						</div>
+						
+						<div class="con-data text-center">
+							<h5>Get Discount <span>30%</span> Off</h5>
+							<p>Sign up to our newsletter and save 30% for you next purchase.<br>
+                               No spam, we promise !</p>
+						</div>
+						<div class="subscribe text-center">
+							<form  name="myForm"  autocomplete="off">
+								<input type="email" ng-model="myMail" name="myMail" required ><button type="submit"  ng-disabled="myForm.myMail.$invalid ">SUBSCRIBE <i class="fas fa-arrow-right"></i></button>
+								<span ng-hide="myForm.myMail.$touched && myForm.myMail.$valid || myForm.myMail.$untouched  " ng-show="myForm.myMail.$touched && myForm.myMail.$invalid"  >It's required .....</span>
+							</form>
+						
+						</div>
+							
+						
+						
+					</div>
+				</section>
+				<!-------------------------------------------------------------------------->
+				
+                <!--------------------------------product model------------------------------------>
+                <section class="proModel  hidden-xs">
+                    <div class="con-info">
+                        <div class="col-md-6 col-xs-12 ">
+                            <img src="images/{{image}}.jpg" style="max-width:100%">
+                        </div>
+                        <div class="col-md-6 col-xs-12 con-all-info">
+                              <a href="#" class="close cloPro" aria-label="close">&times;</a>
+                            <h5>{{title}}</h5>
+                            <h6>{{price}}</h6>
+                            <p>Nam ac elit a ante commodo tristique. Tum vehicula a hendrerit ac nisi hendrerit ac nisi Lorem ipsum dolor sit perdiet nibh vel magna lacinia.</p>
+                            <p>Sed id interdum urna. Nam ac elit a ante commodo tristiques. Tum vehicula a hendrerit ac nisi. Hendrerit ac nisi Lorem ipsum dolor sit perdiet nibh vel magna lacinia ultrices. Sed id interdum urna ac elit a ante commodo tristique</p>
+                            <button class="btn cloModePro"  ng-click="addShop(pId)">Add To Cart</button>
+                            
+                        </div>
+                    </div>
+                </section>
+                <!----------------------------------------------------------------------------------->
+                <!--------------------------------------message--------------------->
+                <section class="mess" id="snackbar">
+                    <h6 class="text-center">You Must Log in First</h6>
+                </section>
+                <!----------------------------------------------------------------->
+				
+				<!--------------------------------------message--------------------->
+               
+                <!----------------------------------------------------------------->
+                
+                <!---------------------------------------model ------------------------------------->
+                <section class="imgModel">
+                    <div class="text-center cloModel"><i class="fas fa-times"></i></div>
+                    <div class="con-img">
+                        <img style="max-width:100% ;">
+                    </div>
+                </section>
+                <!---------------------------------------------------------------------------->
+                
+                  <!--------------------------------------------login form ------------------------------------------>
+                <section class="log-model">
+                    <div class="text-center clo"><i class="fas fa-times"></i></div>
+                    <div class="con-form">
+                        <div class="con-log text-center"><img src="images/logo.png"></div>
+                        
+                        <form action=""  name="myForm" autocomplete="off" id="prospects_form" >
+                          <div class="form-group">
+                            <label for="email">Email address:</label>
+                              
+                            <input type="email" class="form-control" ng-model="myMail" name="myMail"  required>
+                            <span class="mailInput" ng-hide="myForm.myMail.$touched && myForm.myMail.$valid || myForm.myMail.$untouched  " ng-show="myForm.myMail.$touched && myForm.myMail.$invalid">You Must Enter Valid E-mail </span>
+                          </div>
+                          <div class="form-group">
+                            <label for="pwd">Password:</label>
+                              
+                            <input type="password" class="form-control" ng-model="myPass"  name="myPass" required>
+                              
+                              <span class="passInput" ng-hide="myForm.myPass.$touched && myForm.myPass.$valid || myForm.myPass.$untouched " 
+                                    ng-show="myForm.myPass.$touched && myForm.myPass.$invalid" >You Must Enter Valid Password </span>
+                          </div>
+
+                          <button type="submit"  id="sub" ng-disabled="myForm.myMail.$invalid || myForm.myPass.$invalid" class="btn btn-default" ng-click="fun()">Submit</button>
+                            
+                        </form>
+                    </div>
+                </section>
+                <!------------------------------------------------------------------------------------------------->
+               
+                <!---------------------------------------------myOwnNav-------------------------->
+                <section class="my-nav ">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-2  col-xs-6">
+                               <div class="logo">
+                                   <img src="images/hamburger-black.svg" title="menu"  class="hidden-lg ham">
+                                   <img src="images/logo.png" >
+                                </div>
+                            </div>
+                            <div class="col-lg-7 hidden-md  hidden-sm hidden-xs">
+                               <div class="con-list">
+                                  <ul class="list-unstyled list-inline text-center" >
+                                     <li>Home </li>
+                                     <li>Shop </li>
+                                     <li>Products </li>
+                                     <li>Elements </li>
+                                     <li>Pages </li>
+                                     <li>Catelogs </li>
+                                    </ul>  
+                                 </div>  
+                            </div>
+                            <div class="col-lg-3 col-xs-6">
+                                
+                                <div class="con-shop">
+                                  <ul class="list-unstyled list-inline" >
+									  
+                                     <li data-toggle="tooltip" title="Login" data-placement="bottom" class="log" >
+										 <i  class="fas fa-user" ></i></li>
+									   <li data-toggle="tooltip" title="wish list" data-placement="bottom"  class="lovingBtn">
+										   <i class="fas fa-heart"></i><span class="badge" id="count" ng-bind="lenLove()"></span>
+									  </li>
+                                     <li data-toggle="tooltip"  data-placement="bottom" title="Shopping Cart" >
+										 <i class="fas fa-shopping-cart" ></i><span class="badge" id="count" ng-bind="lenm()"></span> 
+									  </li>
+									 
+                                    </ul>  
+                                 </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!------------------------------------------------------------------------------>
+				
+                <!---------------------------------ensure remove item  model ------------------------------>
+				<section class="ensure text-center">
+					<div class="con-msg ">
+						<h6>Are You Sure You Want to Remove this item  ?</h6>
+						<button class="btn btn-success">No </button>
+						<button class="btn btn-danger" >Yes </button>
+					</div>
+				</section>
+				<!------------------------------------------------------------------------------------------>
+                
+                <!--------------------------------------cart------------------------------------------
+                <section class="cart">
+                    <h2>Shopping Cart</h2>
+                    <h3 class="close-shopping-list">Close</h3>
+                    <div class="clr"></div>
+                    <h4 ng-show="TryShow()">You have no items in your shopping cart.</h4>
+					
+						
+							
+							<div class="con-all" ng-repeat="shop in shoopingList">
+								<img  class="col-xs-5" src="images/{{shop. proImage}}.jpg" style="max-width:100%">
+							<div class="col-xs-6">
+								<div class="con-data">
+									
+									<h5>{{shop.proName}}</h5>
+									<h6>{{shop.proPrice}}</h6>
+									
+								</div>
+							</div>
+								<div class="col-xs-1"><i class="fas fa-times " aria-label="remove" id="f" style="margin-left:-20px ; cursor:pointer"  ng-click="deleItem(shop.proId)"></i></div>
+							</div>
+							
+						
+                </section> --> 
+                <!--------------------------------------------------------------------------------------->
+				
+				<!------------------------------------new cart ------------------------------------->
+				<section class="newCart">
+					<div class="container">
+						
+						<h6 class=" close-shopping-list">Close</h6>
+						<div class="clr"></div>
+						<h3>Shopping List</h3>
+						<div class="row">
+							
+							<!-----------------items--------------------->
+							<div class="col-md-8 col-sm-12 col-xs-12 ">
+								
+								<h5 ng-show="showItemShopping()">No Item Select</h5>
+								<div class="col-md-4 col-sm-6 col-xs-6 con-items " ng-hide="howItemShopping()" ng-repeat="x in shoopingList" >
+									<img src="images/{{x.proLove}}.jpg"><br>
+									<span class="text-center">{{x.proName}}</span><br>
+									<span class="price text-center ">{{x.proPrice}}</span><br>
+									
+									  <ul class="list-unstyled list-inline ">
+										  
+                                    <li data-toggle="tooltip" onclick="sets()" title="Remove From Cart " class="text-center car"  ng-click="deleItem(x.proId)"><i class="fas fa-shopping-bag"></i></li>
+       
+                                    <li  data-toggle="tooltip" onclick="get s()" title="Add to Wish list" class="text-center love" ng-class="getCSSClass(x.proId)"  ng-click="love(x.proId)"  
+										><i class="far fa-heart"></i></li>
+                                    
+                                    
+                                </ul>
+								</div>
+								
+								
+								
+							</div>
+							
+							<!-----------------data--------------------->
+							<div class="col-md-4 col-sm-12 info ">
+								<h6>Number Of Items : <span ng-bind="lenm()"></span></h6>
+								<h6>Total Price : <span>$</span><span ng-bind="price()"></span></h6><br><br> 
+								
+								<form name="myForForm" >
+								<h6 class="col-xs-12">Your City</h6>
+								<input type="text" list="city" id="city1" class="col-sm-5 col-xs-12" placeholder="Choose City" ng-model="city" name="city" ng-disabled = "ChechItems()" required >
+								<datalist id="city">
+									
+									<option value="Cairo">Cairo</option>
+									<option value="Alex">Alex</option>
+									<option value="Suez">Suez</option>
+									<option value="Portsaid">Portsaid</option>
+									<option value="Other"></option>
+								</datalist>
+								
+								
+							<input type="text" ng-model="otherCity"  class="col-sm-5 col-xs-12 cityOther" ng-disabled="myForForm.city.$untouched || checkInput()"  name="otherCity" ng-model ="otherCity" placeholder="Enter Your City">
+									
+									
+									
+									
+									<h6 class="col-xs-12">Your Street</h6>
+									
+										<input type="text" list="country" class="col-sm-5 col-xs-12" ng-disabled="myForForm.city.$untouched || checkm()" placeholder="Choose street" id="city2" ng-model="country" name="country">
+								<datalist id="country" ng-switch="city"><br>
+									
+									<option value="New Cairo" ng-switch-when="Cairo">New Cairo</option>
+									<option value="New Cairo" ng-switch-when="Alex">Alex</option>
+									<option value="Nasr City" ng-switch-when="Alex">Alex</option>
+									<option value="New Cairo" ng-switch-when="Suez">Suez</option>
+									<option value="New Cairo" ng-switch-when="Portsaid">Portsaid</option>
+									<option value="Other"></option>
+									
+									
+								</datalist>
+									
+									<input type="text" ng-model="otherStreet" ng-disabled="myForForm.city.$untouched || checkStreet()" class="col-sm-5 col-xs-12 streetOther" name="otherStreet" ng-model="otherStreet" placeholder="Enter Your Street">
+									
+									
+									
+									<h6 class="col-xs-12">Delivery Method </h6>
+									
+									<select class="col-md-10 col-sm-10 col-xs-12" ng-model="deMeth" name="deMeth" ng-disabled = "ChechItems()" required >
+										<option value="" disabled selected >Choose your method</option>
+										<option value="Land">By Land</option>
+										<option value="Sea">By Sea</option>
+										<option value="Air">By Air</option>
+									</select>
+									
+									<h6 class="col-xs-12">Payment Method </h6>
+									
+									<ul class="list-unstyled list-inline col-xs-12" ng-disabled = "ChechItems()">
+										<li data-toggle="tooltip" title="Visa" data-placement="bottom"><i class="fab fa-cc-visa"></i></li>
+										<li data-toggle="tooltip" title="PayPal" data-placement="bottom"><i class="fab fa-cc-paypal"></i></li>
+										<li data-toggle="tooltip" title="Cash" data-placement="bottom"><i class="fas fa-money-bill-alt"></i></li>
+									</ul>
+								
+									<button  class="btn"  id="valBtn" type="submit" name="btnOrder"  
+											ng-disabled = "myForForm.city.$untouched ||   ChechItems() || myForForm.city.$touched && myForForm.city.$invalid|| myForForm.city.$touched && myForForm.city.$invalid &&  myForForm.deMeth.$untouched ||   myForForm.city.$touched && myForForm.city.$valid &&  myForForm.deMeth.$untouched   ||  myForForm.city.$touched && myForForm.city.$valid  && myForForm.otherCity.$invalid   ||  myForForm.city.$touched && myForForm.city.$valid &&   myForForm.otherStreet.$invalid ||  myForForm.city.$touched &&  myForForm.country.$invalid || myForForm.country.$touched && myForForm.country.$valid && myForForm.otherStreet.$invalid "
+											>Order Now</button>
+									
+								</form>
+								
+								
+							</div>
+						</div>
+					</div>
+				</section>
+				<!------------------------------------------------------------------------------------->
+                
+                
+                <!----------------------------------------menu---------------------------------------------->
+                <section class="menu">
+                    <h6 class="close-menu"><i class="fas fa-times"></i> Close</h6>
+                    <div class="con-menu">
+                        <ul class="list-unstyled">
+                             <li>Home </li>
+                                     <li>Shop </li>
+                                     <li>Products </li>
+                                     <li>Elements </li>
+                                     <li>Pages </li>
+                                     <li>Catelogs </li>
+                        </ul>
+                    </div>
+                </section>
+                <!--------------------------------------------------------------------------------------->
+                <!---------------------------------------mySlide------------------------------------------>
+                <section class="mySlide">
+                    
+                    <div class="slide1">
+                        <div class="con-data">
+                            <div class="container">
+                                <div class="con-h4"><h4>TRENDING SOFA <br>COLLECTION</h4></div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <h5>NEW COLLECTION 2018</h5>
+                                        <h6><span>H4</span>SOFA</h6>
+                                        
+                                    </div>
+                                    <div class=" con-p col-md-3 hidden-md hidden-lg hidden-sm hidden-xs text-center">
+                                        <p>Unique design <br>Chair trending</p>
+                                    </div>
+                                    
+                                    <div class="con-p col-md-3 hidden-md hidden-lg hidden-sm hidden-xs">
+                                        <p>The best material <br>For the product</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                        <div class="slide2">
+                        <div class="con-data">
+                            <div class="container">
+                                <div class="con-h4"><h4>TRENDING SOFA <br>COLLECTION</h4></div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <h5>NEW COLLECTION 2018</h5>
+                                        <h6><span>H4</span>SOFA</h6>
+                                        
+                                    </div>
+                                    <div class=" con-p hidden-md hidden-lg hidden-sm hidden-xs text-center">
+                                        <p>Unique design <br>Chair trending</p>
+                                    </div>
+                                    
+                                    <div class="con-p col-md-3 hidden-md hidden-lg hidden-sm hidden-xs">
+                                        <p>The best material <br>For the product</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                       <div class="slide3">
+                        <div class="con-data">
+                            <div class="container">
+                                <div class="con-h4"><h4>TRENDING SOFA <br>COLLECTION</h4></div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <h5>NEW COLLECTION 2018</h5>
+                                        <h6><span>H4</span>SOFA</h6>
+                                        
+                                    </div>
+                                    <div class=" con-p col-md-3 hidden-md hidden-lg hidden-sm hidden-xs text-center">
+                                        <p>Unique design <br>Chair trending</p>
+                                    </div>
+                                    
+                                    <div class="con-p col-md-3 hidden-md hidden-lg hidden-sm hidden-xs">
+                                        <p>The best material <br>For the product</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                </section>
+                <!-------------------------------------------------------------------------------------------->
+                
+                <!---------------------------------------about------------------------------------------->
+                
+                <section class="about">
+                    <div class="container">
+                        <h4 class="text-center">HEBES STORE</h4>
+                        <div class="row">
+                            
+                            <div class="col-md-4  col-xs-12 con-all">
+                                <div class="col-xs-1 con-letter">
+                                    <h6>F</h6>
+                                </div>
+                                <div class="col-xs-9">
+                                    <div class="con-data">
+                                        <h5>Free shipping</h5>
+                                        <h6>ALL ODER OVER $30</h6>
+                                        <p>Nam ac elit a ante commodo tristique. Duis lacus urna hicula a ac nisi Lorem ipsum.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="col-md-4  col-xs-12 con-all">
+                                <div class="col-xs-1 con-letter">
+                                    <h6>S</h6>
+                                </div>
+                                <div class="col-xs-9">
+                                    <div class="con-data">
+                                        <h5>Support Customer</h5>
+                                        <h6>SUPPORT 24/7</h6>
+                                        <p>Nam ac elit a ante commodo tristique. Duis lacus urna hicula a ac nisi Lorem ipsum.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="col-md-4  col-xs-12 con-all">
+                                <div class="col-xs-1 con-letter">
+                                    <h6>P</h6>
+                                </div>
+                                <div class="col-xs-9">
+                                    <div class="con-data">
+                                        <h5>Payment security</h5>
+                                        <h6>100% SECURE PAYMENT</h6>
+                                        <p>Nam ac elit a ante commodo tristique. Duis lacus urna hicula a ac nisi Lorem ipsum.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </section>
+                
+                
+                <!----------------------------------------------------------------------------------->
+                <!--------------------------------------deal of week ------------------------------------------>
+          <section class="deal">
+              <div class="container">
+                  <h4 class="text-center">Deal Of The Week</h4>
+                  <div class="con-deal">
+                      <div class="row">
+                          
+                          <div class="col-md-4 col-xs-12 con-img">
+                              <img src="images/deal2.jpg" >
+                              <div class="con-icon">
+                                  <h6>8% Off</h6>
+                                  <ul class="list-unstyled ">
+                                      <li class="love" data-toggle="tooltip" ng-click="addLove2()" title="Add to wishlist" data-placement="left"><i class="far fa-heart"></i></li>
+                                      <li class="sho" data-toggle="tooltip" title="Quide View" data-placement="left"><i class="fas fa-eye"></i></li>
+                                      <li class="car" data-toggle="tooltip" ng-click="addShop2()" title="Add to Shopping Cart" data-placement="left" ng-click="addShop2()"><i class="fas fa-cart-plus"></i></li>
+                                  </ul>
+                              </div>
+                          </div>
+                          
+                          <div class="col-md-7 col-xs-12 con-inf">
+                              <h5>Consectetur hampden</h5>
+                              <div class="stars">
+                                  <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                              </div>
+                              <h6>$110.00<del>$119.60</del></h6>
+                              <p>Nam ac elit a ante commodo tristique. Duis lacus urna hicula a ac nisi Lorem ipsum.Nam ac elit a ante commodo tristique. Duis lacus urna hicula a ac nisi Lorem ipsum.Nam ac elit a ante commodo tristique. Duis lacus urna hicula a ac nisi Lorem ipsum.</p>
+                              
+                              <ul class="list-unstyled list-inline">
+                                  <li><div id="days" class="count ">360</div>Days</li>
+                                 <li><div  id="hours" class="count ">20</div>Hours</li>
+                                  <li><div id="mins" class="count">9</div>Mins</li>
+                                  <li><div id="secs" class="count ">5</div>Secs</li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+                </section>
+                <!---------------------------------------------------------------------------------------->
+                <!----------------------------------------fasal---------------------------------->
+                <section class="fasal">
+                    
+                  <img src="images/try.PNG" style="max-width:100%">
+                    
+                    
+                </section>
+                <!------------------------------------------------------------------------------>
+                
+                <!----------------------------------blog-------------------------------------------->
+         
+                <!-------------------------------------------------------------------------------->
+                
+                
+               <!----------------------------product----------------------------------------------->
+                <section class="product">
+                    <h4 class="text-center">Products</h4>
+                    <ul class="list-inline list-unstyled text-center">
+                        <li class="chair">CHAIR</li>
+                        <li class="sofa" >SOFA</li>
+                        <li class="tabl">TABLE</li>
+                        <li class="lamp" >LAMP</li>
+                    </ul>
+                    <div class="" >
+                        
+                        <div class="col-md-3 col-sm-6 col-xs-12 con-all "  ng-repeat="pro in product" data-toggle={{pro.proToggle}}>
+                            
+                            <div class="con-img">
+                                <img src="images/{{pro.proImage}}.jpg ">
+                            </div>
+                            
+                            <div class="con-data text-center">
+                                <h5>{{pro.proName}}</h5>
+                                <ul class="list-unstyled list-inline">
+                                    <li data-toggle="tooltip" title="Add to cart" class="text-center car" ng-class="getCartClass(pro.proId)" ng-click="addShop(pro.proId)"><i class="fas fa-shopping-bag"></i></li>
+                                    <li data-toggle="tooltip" title="Quick View" class="text-center sea"  ng-click="modelData(pro.proId)"><i class="fas fa-search"></i></li>
+                                    <li  data-toggle="tooltip" title="Add to Wish list" class="text-center love" ng-class="getCSSClass(pro.proId)"  ng-click="love(pro.proId)"  
+										><i class="far fa-heart"></i></li>
+                                    
+                                    
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </section>
+                 <!-------------------------------------------------------------------------------->
+				
+				
+                
+                <!---------------------------------testmonial----------------------------------->
+				<section class="testmonial text-center">
+					<h4 >what people say about us</h4>
+					<div class="container">
+						<div class="con-test">
+							<i class="fas fa-caret-up" onclick="plusSlide(1)"></i>
+							
+							
+							<div class="mySlidee">
+								<img src="images/test1.png" >
+								<p>" Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse faucibus sed dolor eget posuere. Sed id interdum"</p>
+								<h6 class="tryh6"><span>MASTER KING</span> - DEVELOPER</h6>
+							</div>
+							
+							<div class="mySlidee">
+								<img src="images/test2.png" >
+								<p>" Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse faucibus sed dolor eget posuere. Sed id interdum"</p>
+								<h6 class="tryh6"><span>DAVID</span> - CEO</h6>
+							</div>
+							
+							<div class="mySlidee">
+								<img src="images/test3.png" >
+								<p>" Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse faucibus sed dolor eget posuere. Sed id interdum"</p>
+								<h6 class="tryh6"><span>SPRING LEE</span> - DESIGNER</h6>
+							</div>
+							
+							
+							<i class="fas fa-caret-down" onclick="plusSlide(-1)"></i>
+						</div>
+					</div>
+				</section>
+				
+				<!-------------------------------------------------------------------------------------->
+				
+				
+              <!------------------------------------product------------------------------------------------>
+				<section class="company text-center">
+					<div class="container">
+						<ul class="list-unstyled list-inline">
+							<li><img src="images/comp1.jpg"></li>
+							<li><img src="images/comp2.jpg"></li>
+							<li><img src="images/comp3.jpg"></li>
+							<li><img src="images/comp4.jpg"></li>
+							<li><img src="images/comp5.jpg"></li>
+							<li><img src="images/comp6.jpg"></li>
+						</ul>
+					</div>
+				</section>
+              <!-------------------------------------------------------------------------------------------->
+				
+                <!----------------------------------------footer---------------------------------------------------->
+				<section class="footer">
+					<div class="col-md-2 col-ms-6 col-xs-12 divs">
+						<img src="images/logo.png">
+						<h6>© 2018 Hebes - All Rights Reserved</h6>
+					</div>
+					<div class="col-md-3 col-sm-6 col-xs-12 divs">
+						<address>
+							184 Main Rd E, St Albans <br>
+                            VIC 3021, Australia<br>
+							<span>contact@company.com</span><br>
+							<span>0000000000</span>
+						</address>
+					</div>
+					<div class="col-md-2 col-sm-6 col-xs-12 divs">
+						<ul class="list-unstyled tryUl">
+							<li>About</li>
+							<li>Privacy Policy</li>
+							<li>Term & Conditions</li>
+							<li>Contact Us</li>
+							<li>Help</li>
+							
+						</ul>
+					</div>
+					<div class="col-md-3 col-sm-6 col-xs-12 divs">
+						<h5>GET 20% OFF</h5>
+						<h6 style="margin-top:0;">By subscribing to our newsletter</h6>
+						<form name="subForm">
+							<input type="email" ng-model = "mailSub" name="mailSub" placeholder="Enter Your Mail" required>
+							
+						</form>
+						<h6 style="margin-top:10px ; color:red" ng-show="subForm.mailSub.$touched && subForm.mailSub.$invalid" ng-hide="subForm.mailSub.$untouched || subForm.mailSub.$touched && subForm.mailSub.$valid">This is a required field.</h6>
+						
+					</div>
+					<div class="col-md-2 col-sm-6 col-xs-12 divs">
+						<h4>Follow Us</h4>
+						<ul class="list-unstyled list-inline tryIc">
+							<li><i class="fab fa-facebook-f"></i></li>
+							<li><i class="fab fa-twitter"></i></li>
+							<li><i class="fab fa-instagram"></i></li>
+						</ul>
+					</div>
+					
+				</section>
+                
+                <!---------------------------container-fluid row---------------------------------------------->
+            </div></div>
+        <!-----------------------------script----------------------------------------->
+        <script src="js/javas.js"></script>
+	
+        
+          
+    </body>
+</html>
